@@ -12,6 +12,9 @@
         <form @submit.prevent="deleteDish(dish._id)" class="mb-3" id="remove-dish-form">
           <button class="x-button">X</button>
         </form>
+        <form @submit.prevent="editDish(dish._id)" class="mb-3" id="remove-dish-form">
+          <button class="x-button">/</button>
+        </form>
       </li>
     </div>
   </div>
@@ -65,6 +68,9 @@ export default {
             this.dishesh = result;
           }
         });
+    },
+    editDish(id) {
+      this.$router.push(`edit/${id}`);
     },
   },
 };

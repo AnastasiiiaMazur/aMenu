@@ -32,8 +32,14 @@ function deleteDish(id){
     return dishesh.find();
 }
 
+function editDish(id, dish){
+    var res = dishesh.update({_id: id}, {$set: dish})
+    return { "message": "Edit successful"}
+}
+
 module.exports = {
     addDish,
     getAll,
-    deleteDish
+    deleteDish,
+    editDish
 };

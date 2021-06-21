@@ -20,6 +20,13 @@ const routes = [
       return import(/* webpackChunkName: "about" */ '../views/About.vue');
     },
   },
+  {
+    path: '/edit/:id',
+    name: 'Edit',
+    component() {
+      return import(/* webpackChunkName: "about" */ '../views/Edit.vue');
+    },
+  },
 ];
 
 const router = new VueRouter({

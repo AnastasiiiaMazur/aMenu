@@ -13,6 +13,15 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
+const swaggerUi = require("swagger-ui-express"),
+swaggerDocument = require("./swagger.json");
+
+
+app.use('/api-docs',
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocument)
+);
+
 app.get('/dishesh', (req, res) => {
     dishesh.getAll().then((dishesh) => {
         res.json(dishesh);
@@ -34,6 +43,12 @@ app.delete('/dishesh/:id', (req, res) => {
     dishesh.getAll().then((dishesh) => {
         res.json(dishesh);
     });
+});
+
+app.put('/dishesh/:id', (req, res) => {
+    console.log(req.params.id);
+    console.log(req.body)
+    res.json(dishesh.editDish(req.params.id, req.body));
 });
 
 const port = process.env.PORT || 4000;
